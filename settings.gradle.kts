@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":data:remote")
+include(":data_local")
 
 
 pluginManagement {
@@ -28,3 +28,5 @@ rootProject.name = "movies2"
 include(":app")
 include(":domain")
 include(":data")
+include(":di")
+include(":data_remote")

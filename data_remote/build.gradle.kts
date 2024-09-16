@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     alias(libs.plugins.jetbrains.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 java {
@@ -10,5 +11,9 @@ java {
 
 dependencies {
     implementation(libs.retrofit)
-    implementation(libs.httpInterceptor)
+    implementation(libs.http.interceptor)
+    implementation(project(":data"))
+    implementation(libs.kotlin.serialization.json)
+
+    testImplementation(libs.junit.jupiter)
 }

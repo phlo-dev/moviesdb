@@ -1,4 +1,4 @@
-package br.com.data.remote
+package br.com.data.remote.service
 
 // Default query values
 const val API_QUERY_VALUE = "4a869fe172f0af675b1bedc20f7a273e"

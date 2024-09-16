@@ -1,29 +1,35 @@
 [versions]
-agp = "8.5.2"
-kotlin = "2.0.0"
-coreKtx = "1.13.1"
-junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.5"
-activityCompose = "1.9.2"
-composeBom = "2024.09.01"
-googleGmsGoogleServices = "4.4.2"
-firebaseAnalytics = "22.1.0"
-firebaseCrashlytics = "19.1.0"
-googleFirebaseCrashlytics = "3.0.2"
-jetbrainsKotlinJvm = "2.0.0"
-retrofit = "2.11.0"
-httpInterceptor = "4.12.0"
+agpVersion = "8.5.2"
+kotlinVersion = "2.0.0"
+coreKtxVersion = "1.13.1"
+junitVersion = "4.13.2"
+androidJunitVersion = "1.2.1"
+espressoCoreVersion = "3.6.1"
+lifecycleRuntimeKtxVersion = "2.8.5"
+activityComposeVersion = "1.9.2"
+composeBomVersion = "2024.09.01"
+googleGmsGoogleServicesVersion = "4.4.2"
+firebaseAnalyticsVersion = "22.1.0"
+firebaseCrashlyticsVersion = "19.1.0"
+googleFirebaseCrashlyticsVersion = "3.0.2"
+jetbrainsKotlinJvmVersion = "2.0.0"
+retrofitVersion = "2.11.0"
+httpInterceptorVersion = "4.12.0"
+appcompatVersion = "1.7.0"
+materialVersion = "1.12.0"
+kotlinSerializationVersion = "2.0.20"
+kotlinSerializationJsonVersion = "1.7.1"
+koinVersion = "3.5.6"
+gsonVersion = "2.11.0"
+junitJupiterVersion = "5.8.2"
+coroutinesVersion = "1.9.0"
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+# Android libraries
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityComposeVersion" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBomVersion" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -31,16 +37,39 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-httpInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "httpInterceptor" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompatVersion" }
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+
+# coroutines
+coroutines-core =  { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesVersion"}
+
+# Firebase
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalyticsVersion" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlyticsVersion" }
+
+# Koin
+koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koinVersion"}
+koin-android = { group = "io.insert-koin", name = "koin-android" }
+
+# Requests libs
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+http-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "httpInterceptorVersion" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion"}
+kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJsonVersion"}
+
+# Testing libs
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiterVersion" }
+junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidJunitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCoreVersion" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
-google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googleFirebaseCrashlytics" }
-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+android-application = { id = "com.android.application", version.ref = "agpVersion" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinVersion" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServicesVersion" }
+google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googleFirebaseCrashlyticsVersion" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvmVersion" }
+android-library = { id = "com.android.library", version.ref = "agpVersion" }
+kotlin-serialization = { id = 'org.jetbrains.kotlin.plugin.serialization', version.ref = "kotlinSerializationVersion" }
 
