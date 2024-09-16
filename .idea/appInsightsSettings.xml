@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="br.com.moviesv2" />
+                  <option name="mobileSdkAppId" value="1:923292301789:android:3e4006b0002ad087d15e34" />
+                  <option name="projectId" value="moviesdb-ce442" />
+                  <option name="projectNumber" value="923292301789" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
