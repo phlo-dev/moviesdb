@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.firebase.crashlytics)
     implementation(libs.koin.android)
     implementation(platform(libs.koin.bom))
+    implementation(project(":di"))
+    implementation(project(":domain"))
 
     testImplementation(libs.junit)
 

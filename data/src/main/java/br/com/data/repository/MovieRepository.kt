@@ -4,13 +4,13 @@ import br.com.data.model.MovieListData
 import br.com.data.remote.MoviesRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 
-interface MoviesRepository {
-    fun getMovies(page: Int, genreId: Int): Flow<Result<MovieListData>>
+interface MovieRepository {
+    fun getMovies(page: Int, genreId: Int? = null): Flow<Result<MovieListData>>
 
     companion object {
         fun create(
             remoteDataSource: MoviesRemoteDataSource,
-        ): MoviesRepository = MoviesRepositoryImpl(
+        ): MovieRepository = MovieRepositoryImpl(
             remoteDataSource = remoteDataSource,
         )
     }

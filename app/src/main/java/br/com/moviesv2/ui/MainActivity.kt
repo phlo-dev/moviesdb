@@ -1,4 +1,4 @@
-package br.com.moviesv2
+package br.com.moviesv2.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -29,6 +29,18 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
+@Composable
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+private fun ComponentActivity.RembillAppContainer() {
+    RembillTheme {
+        RembillApp(
+            windowSizeClass = calculateWindowSizeClass(this),
+        )
+    }
+}
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
