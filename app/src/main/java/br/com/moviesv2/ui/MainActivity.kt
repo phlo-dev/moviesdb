@@ -12,16 +12,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import br.com.moviesv2.ui.theme.Movies2Theme
+import br.com.moviesv2.ui.theme.MoviesTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Movies2Theme {
+            MoviesTheme {
                 MoviesContainer()
-                /*caffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                /*Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 private fun ComponentActivity.MoviesContainer() {
-    Movies2Theme {
+    MoviesTheme {
         Surface(
             modifier = Modifier
                 .fillMaxSize()
@@ -62,7 +62,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Movies2Theme {
+    MoviesTheme {
         Greeting("Android")
     }
 }
