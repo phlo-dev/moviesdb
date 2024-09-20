@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.JvmTarget
-
 plugins {
     id("java-library")
     alias(libs.plugins.jetbrains.kotlin.jvm)
