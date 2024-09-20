@@ -13,6 +13,5 @@ kotlin {
 }
 
 dependencies {
-    implementation(project(":data"))
     implementation(libs.coroutines.core)
 }

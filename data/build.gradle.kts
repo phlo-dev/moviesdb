@@ -14,6 +14,7 @@ kotlin {
 
 dependencies {
     implementation(libs.coroutines.core)
+    implementation(project(":domain"))
 
     testImplementation(libs.junit.jupiter)
 }

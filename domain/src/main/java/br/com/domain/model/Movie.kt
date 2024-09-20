@@ -1,7 +1,5 @@
 package br.com.domain.model
 
-import br.com.data.model.MovieData
-
 data class Movie(
     val id: Int,
     val adult: Boolean,
@@ -17,25 +15,4 @@ data class Movie(
     val video: Boolean,
     val voteAverage: Double,
     val voteCount: Int
-) {
-    companion object {
-        fun fromData(movie: MovieData) = Movie(
-            id = movie.id,
-            adult = movie.adult,
-            backdropPath = movie.backdropPath,
-            genreIds = movie.genreIds,
-            originalLanguage = movie.originalLanguage,
-            originalTitle = movie.originalTitle,
-            overview = movie.overview,
-            popularity = movie.popularity,
-            posterPath = movie.posterPath,
-            releaseDate = movie.releaseDate,
-            title = movie.title,
-            video = movie.video,
-            voteAverage = movie.voteAverage,
-            voteCount = movie.voteCount
-        )
-    }
-}
-
-
+)
