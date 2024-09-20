@@ -1,4 +1,4 @@
-package br.com.moviesv2.presentation
+package br.com.moviesv2.presentation.features.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

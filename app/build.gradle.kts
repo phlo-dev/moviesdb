@@ -30,8 +30,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     buildFeatures {
         compose = true
@@ -39,7 +39,7 @@ android {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(8)
 }
 
 dependencies {
@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.firebase.crashlytics)
     implementation(libs.koin.android)
     implementation(platform(libs.koin.bom))
+    implementation(libs.navigation.compose)
     implementation(project(":di"))
     implementation(project(":domain"))
 
