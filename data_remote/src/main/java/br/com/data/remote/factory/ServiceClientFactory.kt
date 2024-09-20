@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object ServiceClientFactory {
 
-    inline fun <reified T> createClient(
+    inline fun <reified T> createService(
         url: String, okHttpClient: OkHttpClient?
     ): T {
         val retrofit = Retrofit.Builder()

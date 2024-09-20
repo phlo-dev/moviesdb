@@ -33,11 +33,9 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.koin.android)
     implementation(platform(libs.koin.bom))
+    implementation(libs.http.interceptor)
     implementation(project(":data_remote"))
     implementation(project(":data"))
     implementation(project(":domain"))

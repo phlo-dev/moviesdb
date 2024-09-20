@@ -6,16 +6,25 @@ import br.com.data.remote.datasource.MoviesRemoteDataSourceImpl
 import br.com.data.remote.factory.ServiceClientFactory
 import br.com.data.remote.service.BASE_URL
 import br.com.data.remote.service.MoviesService
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val remoteDataSourceModule = module {
-    single { ServiceClientFactory.createHttpLoggingInterceptor() }
+    singleOf(ServiceClientFactory::createHttpLoggingInterceptor) bind HttpLoggingInterceptor::class
+    singleOf(ServiceClientFactory::createOkHttpClient) bind OkHttpClient::class
 
-    single { ServiceClientFactory.createOkHttpClient(get(), get()) }
+    singleOf(::RequestInterceptor)
 
-    single { RequestInterceptor() }
+    single {
+        ServiceClientFactory.createService<MoviesService>(
+            url = BASE_URL,
+            okHttpClient = get()
+        )
+    }
 
-    single { ServiceClientFactory.createClient<MoviesService>(BASE_URL, get()) }
-
-    factory<MoviesRemoteDataSource> { MoviesRemoteDataSourceImpl(get()) }
+    factoryOf(::MoviesRemoteDataSourceImpl) bind MoviesRemoteDataSource::class
 }
