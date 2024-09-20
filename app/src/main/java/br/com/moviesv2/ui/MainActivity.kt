@@ -4,9 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,12 +20,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Movies2Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                MoviesContainer()
+                /*caffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
-                }
+                }*/
             }
         }
     }
@@ -32,12 +34,19 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-private fun ComponentActivity.RembillAppContainer() {
-    RembillTheme {
-        RembillApp(
-            windowSizeClass = calculateWindowSizeClass(this),
-        )
+private fun ComponentActivity.MoviesContainer() {
+    Movies2Theme {
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.surface),
+        ) {
+//            MoviesNavHost(
+//                modifier = Modifier.fillMaxSize(),
+//                onBackClick = onBackClick,
+//                navController = appState.navController,
+//            )
+        }
     }
 }
 
