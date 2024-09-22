@@ -4,44 +4,49 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.domain.model.Movie
 import br.com.domain.usecases.GetMoviesUseCase
+import br.com.moviesv2.presentation.features.home.MoviesHomeUiState.Error
+import br.com.moviesv2.presentation.features.home.MoviesHomeUiState.Loading
+import br.com.moviesv2.presentation.features.home.MoviesHomeUiState.Neutral
+import br.com.moviesv2.presentation.features.home.MoviesHomeUiState.Success
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.plus
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class MoviesHomeViewModel(
-    private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val getMoviesUseCase: GetMoviesUseCase,
 ) : ViewModel() {
-    private var currentPage = 1
-    private var totalPage = 1
-    private val _uiState: MutableStateFlow<MoviesHomeUiState> =
-        MutableStateFlow(MoviesHomeUiState.Neutral)
     private val movieList = mutableListOf<Movie>()
-    val uiState: StateFlow<MoviesHomeUiState> = _uiState.asStateFlow()
+    private val _pageFlow = MutableStateFlow(1)
+    val uiState: StateFlow<MoviesHomeUiState> = _pageFlow.flatMapLatest(::getMoviesState).stateIn(
+        scope = viewModelScope.plus(coroutineDispatcher),
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = Neutral
+    )
 
-    fun fetchMovies() {
-        viewModelScope.launch(coroutineDispatcher) {
-            if (totalPage >= currentPage) return@launch
-            val flow = getMoviesUseCase.invoke(page = currentPage).map { result ->
-                val movies = result.getOrNull()
-                val throwable = result.exceptionOrNull()
-                when {
-                    movies != null -> {
-                        movieList += movies.results
-                        currentPage++
-                        MoviesHomeUiState.Success(movieList)
-                    }
-                    throwable != null -> MoviesHomeUiState.Error(throwable)
-                    else -> MoviesHomeUiState.Loading
-                }
-            }
-            flow.collect { state ->
-                _uiState.value = state
-            }
+    private fun getMoviesState(page: Int) = getMoviesUseCase.invoke(page).map { result ->
+        val movies = result.getOrNull()?.results?.also { movieList += it }
+        val throwable = result.exceptionOrNull()
+        when {
+            movies != null -> Success(movieList)
+            throwable != null -> Error(throwable)
+            else -> Loading
         }
     }
+
+    fun fetchMovies() = _pageFlow.value++
+
+    fun refreshMovies() {
+        movieList.clear()
+        _pageFlow.value = 1
+    }
+
 }
