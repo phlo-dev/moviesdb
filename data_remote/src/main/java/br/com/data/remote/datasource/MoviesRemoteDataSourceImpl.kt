@@ -12,7 +12,7 @@ class MoviesRemoteDataSourceImpl(
 ) : MoviesRemoteDataSource {
     override suspend fun getMovies(page: Int, genreId: Int?): Result<MovieListData> {
         try {
-            val data = moviesApi.getMovies(page = page, genreId = "${genreId ?: ""}").toData()
+            val data = moviesApi.getMovies(page = page, /*genreId = "${genreId ?: ""}"*/).toData()
             return Result.success(data)
         } catch (e: Exception) {
             val exception = Exception(e.apiMessage ?: MOVIES_ERROR_LOAD, e)

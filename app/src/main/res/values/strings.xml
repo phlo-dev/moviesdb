@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">movies2</string>
+    <string name="app_name">Movies IMDB</string>
+    <string name="movie_list_title">Movies</string>"
 </resources>

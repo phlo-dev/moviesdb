@@ -8,7 +8,7 @@ interface MoviesService {
     @GET(MOVIES_PATH)
     suspend fun getMovies(
         @Query(PAGE_QUERY) page: Int,
-        @Query(GENRE_MOVIES_QUERY) genreId: String
+//        @Query(GENRE_MOVIES_QUERY) genreId: String
     ): MovieListResponse
 
     @GET(SEARCH_PATH)

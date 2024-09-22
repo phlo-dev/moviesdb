@@ -18,6 +18,7 @@ dependencies {
     implementation(libs.http.interceptor)
     implementation(project(":data"))
     implementation(libs.kotlin.serialization.json)
+    implementation(libs.retrofit.serialization.converter)
 
     testImplementation(libs.junit.jupiter)
 }

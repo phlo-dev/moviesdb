@@ -1,18 +1,24 @@
 package br.com.data.remote.factory
 
 import br.com.data.remote.RequestInterceptor
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 
 object ServiceClientFactory {
+    const val JSON_CONTENT_TYPE = "application/json"
 
     inline fun <reified T> createService(
         url: String, okHttpClient: OkHttpClient?
     ): T {
+        val contentType = JSON_CONTENT_TYPE.toMediaType()
         val retrofit = Retrofit.Builder()
             .baseUrl(url)
+            .addConverterFactory(Json.asConverterFactory(contentType))
             .addClient(okHttpClient)
             .build()
 

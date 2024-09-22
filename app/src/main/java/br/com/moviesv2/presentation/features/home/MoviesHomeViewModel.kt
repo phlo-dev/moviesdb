@@ -6,7 +6,6 @@ import br.com.domain.model.Movie
 import br.com.domain.usecases.GetMoviesUseCase
 import br.com.moviesv2.presentation.features.home.MoviesHomeUiState.Error
 import br.com.moviesv2.presentation.features.home.MoviesHomeUiState.Loading
-import br.com.moviesv2.presentation.features.home.MoviesHomeUiState.Neutral
 import br.com.moviesv2.presentation.features.home.MoviesHomeUiState.Success
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +28,7 @@ class MoviesHomeViewModel(
     val uiState: StateFlow<MoviesHomeUiState> = _pageFlow.flatMapLatest(::getMoviesState).stateIn(
         scope = viewModelScope.plus(coroutineDispatcher),
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = Neutral
+        initialValue = Loading
     )
 
     private fun getMoviesState(page: Int) = getMoviesUseCase.invoke(page).map { result ->

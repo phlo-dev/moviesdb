@@ -19,6 +19,6 @@ const val PAGE_QUERY = "page"
 const val SEARCH_QUERY = "query"
 
 //PATHS
-const val MOVIES_PATH = "/4/discover/movie"
+const val MOVIES_PATH = "/3/discover/movie"
 const val SEARCH_PATH = "/3/search/movie"
 const val GENRE_PATH = "/3//genre/movie/list"

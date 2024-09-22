@@ -1,31 +1,48 @@
 [versions]
+# Default android
 agpVersion = "8.5.2"
+jetbrainsKotlinJvmVersion = "2.0.0"
 kotlinVersion = "2.0.0"
 coreKtxVersion = "1.13.1"
-junitVersion = "4.13.2"
 androidJunitVersion = "1.2.1"
 espressoCoreVersion = "3.6.1"
 lifecycleRuntimeKtxVersion = "2.8.6"
 activityComposeVersion = "1.9.2"
 composeBomVersion = "2024.09.02"
 googleGmsGoogleServicesVersion = "4.4.2"
+appcompatVersion = "1.7.0"
+
+# Material
+googleMaterialVersion = "1.12.0"
+material3Version = "1.3.0"
+
+# Navigation
+navVersion = "2.8.1"
+
+# Firebase
 firebaseAnalyticsVersion = "22.1.0"
 firebaseCrashlyticsVersion = "19.1.0"
 googleFirebaseCrashlyticsVersion = "3.0.2"
-jetbrainsKotlinJvmVersion = "2.0.0"
+
+# Retrofit
 retrofitVersion = "2.11.0"
 httpInterceptorVersion = "4.12.0"
-appcompatVersion = "1.7.0"
-materialVersion = "1.12.0"
+retrofitConvertVersion = "1.0.0"
 kotlinSerializationVersion = "2.0.20"
 kotlinSerializationJsonVersion = "1.7.1"
+
+# Koin
 koinVersion = "3.5.6"
-junitJupiterVersion = "5.8.2"
+
+# Coroutines
 coroutinesVersion = "1.9.0"
-navVersion = "2.8.1"
+
+# Tests
+junitVersion = "4.13.2"
+junitJupiterVersion = "5.8.2"
 
 [libraries]
-# Android libraries
+# Android default libraries
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityComposeVersion" }
@@ -38,26 +55,31 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompatVersion" }
-material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+
+# Material
+material = { group = "androidx.compose.material3", name = "material3", version.ref = "material3Version" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterialVersion" }
 
 # Navigation
-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navVersion"}
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navVersion" }
 
 # coroutines
-coroutines-core =  { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesVersion"}
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
 
 # Firebase
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalyticsVersion" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlyticsVersion" }
 
 # Koin
-koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koinVersion"}
+koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koinVersion" }
 koin-android = { group = "io.insert-koin", name = "koin-android" }
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose" }
 
 # Requests libs
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
 http-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "httpInterceptorVersion" }
-kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJsonVersion"}
+kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJsonVersion" }
+retrofit-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitConvertVersion" }
 
 # Testing libs
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiterVersion" }

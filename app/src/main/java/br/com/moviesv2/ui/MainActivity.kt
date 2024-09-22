@@ -8,10 +8,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import br.com.moviesv2.navigation.MoviesNavHost
 import br.com.moviesv2.ui.theme.MoviesTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,12 +22,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             MoviesTheme {
                 MoviesContainer()
-                /*Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }*/
             }
         }
     }
@@ -34,35 +29,21 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-private fun ComponentActivity.MoviesContainer() {
+private fun ComponentActivity.MoviesContainer(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController(),
+) {
     MoviesTheme {
         Surface(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.surface),
         ) {
-//            MoviesNavHost(
-//                modifier = Modifier.fillMaxSize(),
-//                onBackClick = onBackClick,
-//                navController = appState.navController,
-//            )
+            MoviesNavHost(
+                modifier = Modifier.fillMaxSize(),
+                onBackClick = onBackPressedDispatcher::onBackPressed,
+                navController = navController,
+            )
         }
-    }
-}
-
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MoviesTheme {
-        Greeting("Android")
     }
 }

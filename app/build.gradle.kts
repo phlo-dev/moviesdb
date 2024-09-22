@@ -55,10 +55,13 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
     implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
     implementation(platform(libs.koin.bom))
     implementation(libs.navigation.compose)
     implementation(project(":di"))
     implementation(project(":domain"))
+    implementation(libs.material)
+    implementation(libs.google.material)
 
     testImplementation(libs.junit)
 
